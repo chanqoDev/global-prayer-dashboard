@@ -1,6 +1,7 @@
 import { Component, AfterViewInit, ElementRef } from '@angular/core';
 import { Grid } from 'gridjs';
 
+
 @Component({
   selector: 'app-dashboard',
   standalone: true,
