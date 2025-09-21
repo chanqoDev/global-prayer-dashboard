@@ -10,5 +10,5 @@ import { Hero } from './components/hero/hero';
   templateUrl: './app.html'
 })
 export class App {
-  // protected readonly title = signal('global-prayer-dashboard');
+  protected readonly title = signal('global-prayer-dashboard');
 }

@@ -1,9 +1,10 @@
+<!--
 <mat-form-field>
   <mat-label>Enter Your Full Name</mat-label>
   <input matInput>
 </mat-form-field>
 
-<!-- EMAIL INPUT  -->
+ 
 <div class="example-container">
   <mat-form-field>
     <mat-label>Enter your email</mat-label>
@@ -24,10 +25,7 @@
   <mat-label>Prayer Request</mat-label>
   <textarea matInput></textarea>
 </mat-form-field>
-
-<!-- MatDatePicker 
  
--->
 <mat-form-field>
   <mat-label>Choose a date</mat-label>
   <input matInput [matDatepicker]="picker" >
@@ -36,7 +34,7 @@
   <mat-datepicker #picker></mat-datepicker>
 </mat-form-field>
 
-<!-- Select Form filed -->
+ 
 <mat-form-field>
   <mat-label>Urgency</mat-label>
   <mat-select>
@@ -46,5 +44,98 @@
   </mat-select>
 </mat-form-field>
 
+-->
+
+
+<!--
+<mat-form-field>
+  <mat-label>Enter Your Full Name</mat-label>
+  <input matInput>
+</mat-form-field>
+
+ 
+<div class="example-container">
+  <mat-form-field>
+    <mat-label>Enter your email</mat-label>
+    <input
+      matInput
+      placeholder="pat@example.com"
+      [formControl]="email"
+      (blur)="updateErrorMessage()"
+      required
+    />
+    @if (email.invalid) {
+      <mat-error>{{errorMessage()}}</mat-error>
+    }
+  </mat-form-field>
+</div>
+
+<mat-form-field>
+  <mat-label>Prayer Request</mat-label>
+  <textarea matInput></textarea>
+</mat-form-field>
+ 
+<mat-form-field>
+  <mat-label>Choose a date</mat-label>
+  <input matInput [matDatepicker]="picker" >
+  <mat-hint>MM/DD/YYYY</mat-hint>
+  <mat-datepicker-toggle matIconSuffix [for]="picker" ></mat-datepicker-toggle>
+  <mat-datepicker #picker></mat-datepicker>
+</mat-form-field>
+
+ 
+<mat-form-field>
+  <mat-label>Urgency</mat-label>
+  <mat-select>
+    <mat-option value="one">Low</mat-option>
+    <mat-option value="two">Medium</mat-option>
+    <mat-option value="three">High</mat-option>
+  </mat-select>
+</mat-form-field>
+
+-->
+
+<form [formGroup]="form" (ngSubmit)="submitForm()">
+  <mat-form-field>
+    <mat-label>Enter Your Full Name</mat-label>
+    <input matInput formControlName="name" />
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Enter your email</mat-label>
+    <input id="email" matInput formControlName="email" placeholder="pat@example.com" required />
+   @if (form.get('email')?.invalid) {
+  <mat-error>
+    {{ form.get('email')?.hasError('email') ? 'Not a valid email' : 'Email is required' }}
+  </mat-error>
+}
+
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Prayer Request</mat-label>
+    <textarea matInput formControlName="request"></textarea>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Choose a date</mat-label>
+    <input matInput [matDatepicker]="picker" formControlName="date" />
+    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Urgency</mat-label>
+    <mat-select formControlName="urgency">
+      <mat-option value="low">Low</mat-option>
+      <mat-option value="medium">Medium</mat-option>
+      <mat-option value="high">High</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" type="submit">
+    Submit
+  </button>
+</form>
 
 
