@@ -1,0 +1,132 @@
+.mat-card-title {
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.mat-card-subtitle {
+  font-size: 0.9rem;
+  color: #666666;
+}
+
+.mat-card-content p {
+  margin: 0.5rem 0;
+}
+
+.prayer-card {
+  width: 250px;
+  height: 180px;
+  perspective: 1000px; /* enables 3D */
+}
+
+.card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.prayer-card:hover .card-inner {
+  transform: rotateY(180deg);
+}
+
+.prayer-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  transition: all 0.2s ease-in-out;
+  transform: scale(1.05);
+}
+/* front & back faces */
+.card-front, .card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  background-color: #fff;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-front {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  font-family: "Bebas Neue", sans-serif; 
+  font-weight: 600;
+  font-style: normal;
+}
+.card-back {
+  transform: rotateY(180deg);
+  background-color: #f9f9f9; /* differentiate */
+  color: #444;
+}
+.prayer-cards-container {
+  padding: 5rem;
+  background-color: transparent;
+  overflow: hidden; 
+  position: relative;
+}
+.cards-grid:hover {
+  animation-play-state: paused;
+}
+
+.cards-grid {
+  display: flex;
+  flex-wrap: wrap;         /* allow wrapping to new rows */
+  gap: 1.5rem;
+  justify-content: center; /* center rows */
+  animation: drift 60s linear infinite; 
+}
+/* Pause row drifting when any card inside is hovered */
+.cards-row:hover {
+  animation-play-state: paused;
+}
+
+/* Pause card floating when hovered */
+.prayer-card:hover {
+  animation-play-state: paused;
+}
+
+.prayer-card {
+  flex: 0 0 250px;         /* fixed card width */
+  background-color: #ffffff;
+  color: #333333;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  border-radius: 10px;
+  transition: transform 0.3s ease;
+  animation: float 6s ease-in-out infinite alternate; /* floating effect */
+}
+
+.cards-row {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 1.5rem;
+  justify-content: center;
+  animation: drift 40s linear infinite alternate;
+}
+
+.cards-row:nth-child(even) {
+  animation-direction: reverse; /* alternate direction for realism */
+}
+
+/* keyframes for slow drifting to the left */
+@keyframes drift {
+  0% { transform: translateX(0); }
+  50% { transform: translateX(-30%); } /* adjust distance */
+  100% { transform: translateX(0); }
+}
+.prayer-card {
+  animation: float 6s ease-in-out infinite alternate;
+}
+
+@keyframes float {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(5px); }
+  100% { transform: translateY(0); }
+}

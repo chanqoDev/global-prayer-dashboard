@@ -27,7 +27,7 @@ module.exports = {
     },
   },
   fontFamily: {
-    sans: ["'Inter'", "sans-serif"],
+    sans: ["'Inter'","Bebas Neue", "sans-serif"],
     display: ["'Merriweather'", "serif"],
   },
 }, 
