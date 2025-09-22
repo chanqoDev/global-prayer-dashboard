@@ -2,12 +2,11 @@ import { Component, AfterViewInit } from '@angular/core';
 import fullpage from 'fullpage.js';
 import { Card } from '../card/card';
 import { Section } from '../section/section';
-import { ButtonComponent } from '../button/button';
-import { DashboardComponent } from '../../features/dashboard/dashboard'; 
-
+// import { DashboardComponent } from '../../features/dashboard/dashboard'; 
+import { PrayerCards } from '../../features/prayer-cards/prayer-cards';
 @Component({
   selector: 'app-hero',
-  imports: [Card, Section, ButtonComponent, DashboardComponent],
+  imports: [Card, Section, PrayerCards],
   templateUrl: './hero.html',
   styles: ``
 })
