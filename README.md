@@ -62,12 +62,23 @@ For more information on using the Angular CLI, including detailed command refere
 
 ### install Dependencies 
 
-> npm install express cors body-parser
+## Running the Server
 
-"start": "ng serve",
+1. Install dependencies:
 
+```bash
+npm install
 
-MONGO DB 
+npm install express cors body-parser
+npm dotenv
+npm install mongoose dotenv
 npm install mongoose
 
 [MongoDB]('https://www.mongodb.com/docs/get-started/?language=nodejs')
+
+npm run start:server
+
+
+3.  make sure you have .env file in root w MongoDB URI ENV
+MONGO_URI=mongodb://localhost:27017/global-prayer-dashboard
+PORT=4000

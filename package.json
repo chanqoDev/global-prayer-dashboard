@@ -1,6 +1,7 @@
 {
   "name": "global-prayer-dashboard",
   "version": "0.0.0",
+   "type": "module",
   "scripts": {
     "ng": "ng",
     "start:server": "node server.js",
@@ -32,6 +33,7 @@
     "@angular/router": "^20.1.0",
     "body-parser": "^2.2.0",
     "cors": "^2.8.5",
+    "dotenv": "^17.2.2",
     "express": "^5.1.0",
     "fullpage.js": "^4.0.37",
     "gridjs": "^6.2.0",

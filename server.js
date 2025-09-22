@@ -1,50 +1,60 @@
 import express from "express"; 
 import cors from "cors"; 
-import { v4 as uuidv4 } from 'uuid'; 
+// import { v4 as uuidv4 } from 'uuid'; 
+import connectDB from './db.js';
+import Prayer from "./models/Prayer.js";
 
 const app = express(); 
-// const PORT = process.env.PORT || 3000;
-const PORT = 3000; 
+const PORT = process.env.PORT || 3000;
 
 app.use(cors()); 
 app.use(express.json());
 
-// temp storage 
-let prayers = []; 
+// connect to MongoDB 
+connectDB(); 
 
-// Post Route for Prayers
-app.post("/api/prayers", (req, res) => {
-    // console.log('Prayers Received:', req.body); 
-    const newPrayer = {
-        id: uuidv4(), // Generates a unique ID
-        name: req.body.name,
-        email: req.body.email,
-        request: req.body.request,
-        dateRaw: isoDate.toISOString(), // ISO 8601 standard
-        dateFormatted: isoDate.toLocaleString("es-MX", {
-          dateStyle: "short",
-          timeStyle: "short"
-        }),
-        urgency: req.body.urgency,
-        createdAt: new Date().toISOString()
-    }
+// POST: save prayer to MongoDB
+app.post("/api/prayers", async (req, res) => {
+  try {
+    const isoDate = req.body.date ? new Date(req.body.date) : new Date();
+    const newPrayer = new Prayer({
+      name: req.body.name,
+      email: req.body.email,
+      request: req.body.request,
+      dateRaw: isoDate.toISOString(),
+      dateFormatted: isoDate.toLocaleString("es-MX", { dateStyle: "short", timeStyle: "short" }),
+      urgency: req.body.urgency
+    });
 
-    // add prayer
-    prayers.push(newPrayer);
-    console.log("Prayers Received:", newPrayer); 
+    const saved = await newPrayer.save();
+    console.log("Prayer saved:", saved);
+    res.status(201).json({ message: "Prayer saved successfully", data: saved });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Server error" });
+  }
+});
 
-    res.status(201).json({message: 'Prayer saved Successfully', data: newPrayer}); 
-}); 
+// GET: fetch prayers
+app.get("/api/prayers", async (req, res) => {
+  try {
+    const prayers = await Prayer.find().sort({ createdAt: -1 });
+    res.json({ message: "Fetched prayers", data: prayers });
+  } catch (err) {
+    res.status(500).json({ error: "Server error" });
+  }
+});
 
-// GET route to fetch all prayers 
-app.get('/api/prayers', (req, res) => {
-    res.json({ message: "Fetch all prayers", data: prayers}); 
-}); 
 
-// DELETE route  
-app.delete("/api/prayers/:id", (req, res) => {
-    prayers = prayers.filter(p => p.id !== req.params.id);
+
+// DELETE
+app.delete("/api/prayers/:id", async (req, res) => {
+  try {
+    await Prayer.findByIdAndDelete(req.params.id);
     res.json({ message: "Prayer deleted", id: req.params.id });
+  } catch (err) {
+    res.status(500).json({ error: "Server error" });
+  }
 });
 
 // spin up server
