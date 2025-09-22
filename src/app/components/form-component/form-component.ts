@@ -12,6 +12,7 @@ import {merge} from 'rxjs';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {provideNativeDateAdapter} from '@angular/material/core';
 import { HttpClient } from '@angular/common/http';
+import { ButtonComponent } from '../button/button';
 
 
 /** @title Form field with hints */
@@ -20,7 +21,8 @@ import { HttpClient } from '@angular/common/http';
   templateUrl: 'form-component.html',
   styleUrls: ['form-component.css'],
   providers: [provideNativeDateAdapter()],
-  imports: [MatFormFieldModule, MatInputModule, MatSelectModule, FormsModule, ReactiveFormsModule, MatDatepickerModule],
+  imports: [MatFormFieldModule, MatInputModule, MatSelectModule, FormsModule, ReactiveFormsModule, MatDatepickerModule, ButtonComponent
+  ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FormField{
@@ -63,7 +65,7 @@ export class FormField{
 
    submitForm() {
     if (this.form.valid) {
-      this.http.post('http://localhost:3000/api/prayers', this.form.value).subscribe({
+      this.http.post('http://localhost:4000/api/prayers', this.form.value).subscribe({
         next: (res) => console.log('✅ Prayer submitted:', res),
         error: (err) => console.error('❌ Error submitting prayer:', err),
       });
