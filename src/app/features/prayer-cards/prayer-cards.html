@@ -1,26 +1,12 @@
-<!-- <section class="prayer-cards-container">
-  <h2>Prayer Wall</h2>
-
-  <div class="cards-grid">
-    <mat-card *ngFor="let prayer of prayers" class="prayer-card">
-      <mat-card-header>
-        <mat-card-title>{{ prayer.name }}</mat-card-title>
-        <mat-card-subtitle>{{ prayer.email }}</mat-card-subtitle>
-      </mat-card-header>
-      <mat-card-content>
-        <p>{{ prayer.request }}</p>
-        <p><small>{{ prayer.dateFormatted || (prayer.createdAt | date:'short') }} — Urgency: {{ prayer.urgency }}</small></p>
-      </mat-card-content>
-    </mat-card>
-  </div>
-</section> -->
 <section class="prayer-cards-container">
-  <h2>Prayer Wall</h2>
+  <h2 class="text-center">Prayer Wall</h2>
 
   <div class="cards-grid">
     <div class="prayer-card" *ngFor="let prayer of prayers">
       <div class="card-inner">
-        
+        <div class="eye">
+      <div class="pupil"></div>
+    </div>
         <!-- Front -->
         <div class="card-front">
           <h3>{{ prayer.name }}</h3>

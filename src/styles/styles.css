@@ -6,7 +6,23 @@
   body {
     @apply bg-background text-foreground font-sans;
   }
+  /* toaster and snackbar */
+.snackbar-success {
+  @apply bg-green-500 text-white font-medium px-4 py-2 rounded shadow-md transition-opacity duration-300;
 }
+
+.snackbar-error {
+  @apply bg-red-500 text-white font-medium px-4 py-2 rounded shadow-md;
+}
+
+.snackbar-warning {
+  @apply bg-yellow-500 text-black font-medium px-4 py-2 rounded shadow-md;
+}
+}
+.snackbar-success {
+  @apply bg-green-500 text-white font-medium px-4 py-2 rounded shadow-md transition-opacity duration-300;
+}
+
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

@@ -29,6 +29,7 @@ app.post("/api/prayers", async (req, res) => {
     const saved = await newPrayer.save();
     console.log("Prayer saved:", saved);
     res.status(201).json({ message: "Prayer saved successfully", data: saved });
+    this.getPrayers(); // refetch latest prayers from server
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: "Server error" });
