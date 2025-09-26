@@ -13,6 +13,7 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {provideNativeDateAdapter} from '@angular/material/core';
 import { HttpClient } from '@angular/common/http';
 import { ButtonComponent } from '../button/button';
+import {MatSnackBar, MatSnackBarModule} from '@angular/material/snack-bar';
 
 
 /** @title Form field with hints */
@@ -21,7 +22,7 @@ import { ButtonComponent } from '../button/button';
   templateUrl: 'form-component.html',
   styleUrls: ['form-component.css'],
   providers: [provideNativeDateAdapter()],
-  imports: [MatFormFieldModule, MatInputModule, MatSelectModule, FormsModule, ReactiveFormsModule, MatDatepickerModule, ButtonComponent
+  imports: [MatFormFieldModule, MatInputModule, MatSelectModule, FormsModule, ReactiveFormsModule, MatDatepickerModule, ButtonComponent,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -44,14 +45,7 @@ export class FormField{
     urgency: new FormControl(''),
   });
 
-  // inject httpCLient
-  // constructor(private http: HttpClient) {
-  //   merge(this.email.statusChanges, this.email.valueChanges)
-  //     .pipe(takeUntilDestroyed())
-  //     .subscribe(() => this.updateErrorMessage());
-  // }
-
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private snackBar: MatSnackBar) {}
 
   updateErrorMessage() {
     if (this.email.hasError('required')) {
@@ -66,11 +60,25 @@ export class FormField{
    submitForm() {
     if (this.form.valid) {
       this.http.post('http://localhost:4000/api/prayers', this.form.value).subscribe({
-        next: (res) => console.log('✅ Prayer submitted:', res),
-        error: (err) => console.error('❌ Error submitting prayer:', err),
-      });
+        next: (res) => {
+          // console.log('✅ Prayer submitted:', res)
+          this.snackBar.open('🙏 Your prayer has been submitted!', 'Close', {
+          duration: 4000,
+          panelClass: ['snackbar-success']
+          });
+          this.form.reset(); 
+        },
+         error: (err) => {
+          this.snackBar.open('❌ Submission failed. Please try again.', 'Close', {
+          duration: 4000,
+          panelClass: ['snackbar-error']
+        });
+      },      });
     } else {
-      console.log('⚠️ Form invalid');
+      this.snackBar.open('⚠️ Please fill out all required fields.', 'Close', {
+      duration: 4000,
+      panelClass: ['snackbar-warning']
+    });
     }
   }
 }

@@ -109,6 +109,7 @@
   gap: 1.5rem;
   justify-content: center;
   animation: drift 40s linear infinite alternate;
+  animation-delay: 2s; /* wait 2s before drifting */
 }
 
 .cards-row:nth-child(even) {
@@ -118,7 +119,7 @@
 /* keyframes for slow drifting to the left */
 @keyframes drift {
   0% { transform: translateX(0); }
-  50% { transform: translateX(-30%); } /* adjust distance */
+  50% { transform: translateX(-10%); } /* adjust distance */
   100% { transform: translateX(0); }
 }
 .prayer-card {
@@ -130,3 +131,73 @@
   50% { transform: translateY(5px); }
   100% { transform: translateY(0); }
 }
+
+
+.prayer-card::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: -12px;
+  width: 20px;
+  height: 30px;
+  background: #42a1c6;
+  border-radius: 50% 0 0 50%;
+  transform: translateY(-50%);
+}
+.eye {
+  position: absolute;
+  margin-left: 20px;
+  margin-top: 20px;
+  z-index: 1;
+  background-color: #fefae0;
+  border: solid black 1px; 
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+}
+
+.pupil {
+  position: absolute;
+  z-index: 2;
+  margin-left: 2px;
+  margin-top: 2px;
+  background-color: black;
+  border-radius: 50%;
+  height: 10px;
+  width: 10px;
+}
+
+
+
+@keyframes sway {
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(5deg); }
+}
+
+.prayer-card::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: -15px;
+  width: 20px;
+  height: 30px;
+  background: #fefae0;
+  border-radius: 50% 0 0 50%;
+  transform: translateY(-50%);
+  animation: sway 3s ease-in-out infinite;
+}
+/* Alizarin (#e74c3c) — strong but not neon red.
+
+Alternative: Pomegranate (#c0392b) if you want deeper red.
+
+🟠 Medium Urgency
+
+Carrot (#e67e22) — warm orange, conveys importance without panic.
+
+Alternative: Pumpkin (#d35400) for extra boldness.
+
+🟢 Low Urgency
+
+Emerald (#2ecc71) — soft green, communicates peace and stability.
+
+Alternative: Nephritis (#27ae60) for a deeper calm tone. */

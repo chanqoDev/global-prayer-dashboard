@@ -10,14 +10,14 @@ module.exports = {
       50:  "#eef2ff",
       100: "#e0e7ff",
       500: "#3b82f6",   // main blue
-      600: "#14213d",   // darker hover
-      700: "#1d4ed8",
+      600: "#FEFEFE",   // darker hover
+      700: "#0097e6",
     },
     secondary: {
       100: "#fef9c3",
       200: "#fefae0",
-      500: "#fca311",
-      600: "#eab308",
+      500: "#1d4ed8",
+      600: "#3b82f6",
     },
     neutral: {
       100: "#e5e5e5",
