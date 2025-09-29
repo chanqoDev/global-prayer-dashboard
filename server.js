@@ -20,10 +20,11 @@ app.post("/api/prayers", async (req, res) => {
     const newPrayer = new Prayer({
       name: req.body.name,
       email: req.body.email,
+      region: req.body.region,
       request: req.body.request,
       dateRaw: isoDate.toISOString(),
       dateFormatted: isoDate.toLocaleString("es-MX", { dateStyle: "short", timeStyle: "short" }),
-      urgency: req.body.urgency
+      urgency: req.body.urgency,
     });
 
     const saved = await newPrayer.save();

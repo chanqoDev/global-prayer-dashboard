@@ -2,7 +2,11 @@
   <h2 class="text-center">Prayer Wall</h2>
 
   <div class="cards-grid">
-    <div class="prayer-card" *ngFor="let prayer of prayers">
+    <div class="prayer-card" *ngFor="let prayer of prayers" [ngClass]="{
+       'urgency-high': prayer.urgency === 'high',
+       'urgency-medium': prayer.urgency === 'medium',
+       'urgency-low': prayer.urgency === 'low'
+    }">
       <div class="card-inner">
         <div class="eye">
       <div class="pupil"></div>
@@ -10,14 +14,17 @@
         <!-- Front -->
         <div class="card-front">
           <h3>{{ prayer.name }}</h3>
-          <p>{{ prayer.request }}</p>
+          <!-- <p><strong>Canada, Toronto</strong></p> -->
+          <p>{{ prayer.region }}</p>
+          <span class="urgency-label text-xs"><strong>Urgency:</strong>{{prayer.urgency}}</span>
         </div>
 
         <!-- Back -->
-        <div class="card-back">
-          <p><strong>Email:</strong> {{ prayer.email }}</p>
+        <div class="card-back text-center">
+          <p>{{prayer.request}}</p>
+          <!-- <p><strong>Email:</strong> {{ prayer.email }}</p> -->
           <p><strong>Date:</strong> {{ prayer.dateFormatted || (prayer.createdAt | date:'short') }}</p>
-          <p><strong>Urgency:</strong> {{ prayer.urgency }}</p>
+          <!-- <p><strong>Urgency:</strong> {{ prayer.urgency }}</p> -->
         </div>
 
       </div>

@@ -40,9 +40,10 @@ export class FormField{
   form = new FormGroup({
     name: new FormControl('', [Validators.required]),
     email: new FormControl('', [Validators.required, Validators.email]),
+    region: new FormControl('USA', Validators.required),
     request: new FormControl('', [Validators.required]),
     date: new FormControl(''),
-    urgency: new FormControl(''),
+    urgency: new FormControl('low', Validators.required),
   });
 
   constructor(private http: HttpClient, private snackBar: MatSnackBar) {}

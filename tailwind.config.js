@@ -9,7 +9,7 @@ module.exports = {
     primary: {
       50:  "#eef2ff",
       100: "#e0e7ff",
-      500: "#3b82f6",   // main blue
+      500: "#273c75",   // main blue
       600: "#FEFEFE",   // darker hover
       700: "#0097e6",
     },
