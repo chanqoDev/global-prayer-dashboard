@@ -186,6 +186,25 @@
   transform: translateY(-50%);
   animation: sway 3s ease-in-out infinite;
 }
+
+/* High Urgency - Alizarin */
+.urgency-high .card-front {
+  background-color: #ff6b81;
+  color: #000;
+}
+
+/* Medium Urgency - Carrot */
+.urgency-medium .card-front {
+  background-color: #fef9c3;
+  color: #000; 
+}
+
+/* Low Urgency - Emerald */
+.urgency-low .card-front {
+  background-color: #0097e6;
+  color: #000;
+}
+
 /* Alizarin (#e74c3c) — strong but not neon red.
 
 Alternative: Pomegranate (#c0392b) if you want deeper red.
