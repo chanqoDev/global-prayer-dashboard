@@ -14,8 +14,23 @@
 
 .prayer-card {
   width: 250px;
-  height: 180px;
+  min-height: 180px;
+  height: auto;       /* allow growth */
   perspective: 1000px; /* enables 3D */
+}
+
+.card-front, .card-back {
+  white-space: normal;         /* allow wrapping */
+  overflow-wrap: anywhere;    /* modern: break long words anywhere if needed */
+  word-wrap: break-word;      /* legacy fallback */
+  word-break: break-word;     /* additional fallback */
+  hyphens: auto;              /* optional: insert hyphens where appropriate */
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+.card-back {
+  padding: 4px; 
 }
 
 .card-inner {

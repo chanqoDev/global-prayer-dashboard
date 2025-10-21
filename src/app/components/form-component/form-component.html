@@ -17,7 +17,6 @@
     {{ form.get('email')?.hasError('email') ? 'Not a valid email' : 'Email is required' }}
   </mat-error>
 }
-
   </mat-form-field>
 
  <mat-form-field appearance="fill">
@@ -31,9 +30,13 @@
 
   <mat-form-field>
     <mat-label>Prayer Request</mat-label>
-    <textarea matInput formControlName="request" placeholder="Type your prayer here..." maxlength="500"></textarea>
-    <mat-hint align="end">{{ form.get('request')?.value?.length || 0 }}/500</mat-hint>
+    <textarea matInput formControlName="request" placeholder="Type your prayer here..." maxlength="180"></textarea>
+    <mat-hint align="end">{{ form.get('request')?.value?.length || 0 }}/180</mat-hint>
+    @if (form.get('request')?.hasError('maxlength')) {
+      <mat-error>Prayer must be under 180 characters.</mat-error>
+    }
   </mat-form-field>
+
 
   <mat-form-field>
     <mat-label>Choose a date</mat-label>
@@ -51,10 +54,7 @@
     </mat-select>
   </mat-form-field>
 
-  <!-- <button mat-raised-button color="primary" type="submit">
-    Submit
-  </button> -->
-  <app-button type="submit"> Submit Prayer</app-button>
+  <app-button type="submit" [disabled]="form.invalid"> Submit Prayer</app-button>
 </form>
 </div>
 

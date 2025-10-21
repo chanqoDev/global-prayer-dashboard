@@ -82,3 +82,7 @@ npm run start:server
 3.  make sure you have .env file in root w MongoDB URI ENV
 MONGO_URI=mongodb://localhost:27017/global-prayer-dashboard
 PORT=4000
+
+
+install NGFORGE 
+npm install @ngx-pwa/local-storage
