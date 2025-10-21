@@ -12,6 +12,11 @@ app.use(express.json());
 
 // connect to MongoDB 
 connectDB(); 
+// global prayer test home
+app.get("/", (req, res) => {
+  res.send("🌍 Global Prayer Dashboard API is running");
+});
+
 
 // POST: save prayer to MongoDB
 app.post("/api/prayers", async (req, res) => {
