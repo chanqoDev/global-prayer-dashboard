@@ -84,5 +84,9 @@ MONGO_URI=mongodb://localhost:27017/global-prayer-dashboard
 PORT=4000
 
 
-install NGFORGE 
+# installing render for Express 
+npm install -g render-cli
+
+
+# install NGFORGE 
 npm install @ngx-pwa/local-storage
