@@ -18,9 +18,9 @@ export class PrayerCards implements OnInit {
   ngOnInit(): void {
     this.loadPrayers();
   }
-
+//http://localhost:4000/api/prayers
   loadPrayers() {
-    this.http.get<{ data: any[] }>('http://localhost:4000/api/prayers')
+    this.http.get<{ data: any[] }>('https://global-prayer-dashboard.onrender.com/api/prayers')
       .subscribe({
         next: (res) => this.prayers = res.data,
         error: (err) => console.error('❌ Error loading prayers:', err)
