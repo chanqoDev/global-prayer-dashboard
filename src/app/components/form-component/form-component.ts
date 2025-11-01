@@ -57,10 +57,10 @@ export class FormField{
       this.errorMessage.set('');
     }
   }
-
+// http://localhost:4000/api/prayers
    submitForm() {
     if (this.form.valid) {
-      this.http.post('http://localhost:4000/api/prayers', this.form.value).subscribe({
+      this.http.post('https://global-prayer-dashboard.onrender.com/api/prayers', this.form.value).subscribe({
         next: (res) => {
           // console.log('✅ Prayer submitted:', res)
           this.snackBar.open('🙏 Your prayer has been submitted!', 'Close', {

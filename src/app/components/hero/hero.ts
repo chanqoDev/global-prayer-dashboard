@@ -15,6 +15,7 @@ import { PrayerCards } from '../../features/prayer-cards/prayer-cards';
 export class Hero implements AfterViewInit {
   ngAfterViewInit() {
     new fullpage('#fullpage', {
+      licenseKey: 'gplv3-license',
       autoScrolling: true,
       navigation: true,
       anchors: ['home', 'about', 'register'],

@@ -13,7 +13,7 @@ export class DashboardComponent implements AfterViewInit {
   constructor(private el: ElementRef) {}
 
   ngAfterViewInit() {
-    fetch("http://localhost:4000/api/prayers") // backend endpoint
+    fetch("https://global-prayer-dashboard.onrender.com/api/prayers") // backend endpoint :  http://localhost:4000/api/prayers
     .then(res => res.json())
     .then(json => {
       const prayers = json.data; 
