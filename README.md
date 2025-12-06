@@ -90,3 +90,7 @@ npm install -g render-cli
 
 # install NGFORGE 
 npm install @ngx-pwa/local-storage
+
+
+# install animation for scroll effects
+npm i gsap
