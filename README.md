@@ -95,5 +95,5 @@ npm install @ngx-pwa/local-storage
 # install animation for scroll effects
 npm i gsap
 
-# install Slick Carousel for swiper for Hero component 
-npm i slick-carousel
+# install Swiper Carousel for swiper for Hero component 
+npm i swiper 

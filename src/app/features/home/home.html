@@ -1,3 +1,20 @@
 <div class="hero">
-    
+  <swiper-container
+    slides-per-view="3"
+    space-between="10"
+    centered-slides="true"
+    pagination="true"
+    navigation="true"
+    breakpoints='{
+      "0": { "slidesPerView": 1 },
+      "768": { "slidesPerView": 1 },
+      "1024": { "slidesPerView": 1 }
+    }'
+    (swiperprogress)="onProgress($event)"
+    (swiperslidechange)="onSlideChange()"
+  >
+    <swiper-slide>Slide 1</swiper-slide>
+    <swiper-slide>Slide 2</swiper-slide>
+    <swiper-slide>Slide 3</swiper-slide>
+  </swiper-container>
 </div>
